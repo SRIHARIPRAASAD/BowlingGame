@@ -35,6 +35,9 @@ namespace BowlingBall
 
         public void Roll(int pins)
         {
+            if (pins < 0)
+                pins = 0;  // For negative value of pins
+
             Rolls[++rollIndex] = pins;
 
             if (Rolls[0] == 10)

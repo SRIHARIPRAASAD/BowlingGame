@@ -8,16 +8,19 @@ namespace BowlingBall
         public int frameScore = 0;
         public int currentFrame = 0;
 
-        public void Roll(int pins)
+        public Game()
         {
-            if (Frames[currentFrame] == null)
+            for (int i = 0; i < 10; i++)
             {
-                Frames[currentFrame] = new Frame();
+                Frames[i] = new Frame();
                 //Check for final frame
-                Frames[currentFrame].Type = currentFrame == 9 ? FrameType.LastFrame : FrameType.Normal;
+                Frames[i].Type = i == 9 ? FrameType.LastFrame : FrameType.Normal;
             }
+        } 
 
-            Frames[currentFrame].Roll(pins);
+        public void Roll(int pins)
+        {           
+             Frames[currentFrame].Roll(pins);
 
             if (Frames[currentFrame].State != FrameState.NotAttempted && Frames[currentFrame].Type != FrameType.LastFrame)
                 currentFrame++;
